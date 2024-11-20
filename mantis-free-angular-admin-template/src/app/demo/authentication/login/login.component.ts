@@ -34,8 +34,13 @@ export default class LoginComponent {
       this.authService.login(this.loginForm.value)
         .subscribe(
           (data: any) => {
+
+            console.log(data); 
+            console.log(data.status);
+   
+            console.log(data.status=='0');
             // Check if login is successful
-            if (data.status === '1' && this.authService.isLoggedIn()) {
+            if (data.status == '0' && this.authService.isLoggedIn()) {
               // If logged in, navigate to the dashboard
               this.router.navigate(['/dashboard/default']);
             } else {
